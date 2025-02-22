@@ -1,0 +1,26 @@
+def find_kth_child(n, k):
+    current = 'M'
+
+
+    k_binary = bin(k - 1)[2:]
+
+    # Traverse the binary representation of k to find the Kth child in the Nth generation
+    for direction in k_binary:
+        if current == 'M':
+            # If the current member is male (M)
+            # Go left (0) for male child, right (1) for female child
+            current = 'M' if direction == '0' else 'F'
+        else:
+            # If the current member is female (F)
+            # Go left (0) for female child, right (1) for male child
+            current = 'F' if direction == '0' else 'M'
+
+    return current
+
+# Example usage:
+n = 3  # Nth generation
+k = 5  # Kth child
+
+# Find the Kth child in the Nth generation
+result = find_kth_child(n, k)
+print(f"The Kth child in the Nth generation is: {result}")
